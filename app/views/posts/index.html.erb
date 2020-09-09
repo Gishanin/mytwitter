@@ -1,0 +1,12 @@
+<div class="posts_wrapper"><% @posts.each do |post|%>
+    <div class="post">
+      <h4><%= post.title %></h4>
+      <p><%= post.text %></p>
+      <hr class="my-4">
+      <div class="post__info">
+        <p><%= post.user.profile.nickname %></p>
+        <p><%= post.created_at %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

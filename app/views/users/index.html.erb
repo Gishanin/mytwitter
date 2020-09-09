@@ -1,0 +1,9 @@
+<h1>Все пользователи</h1>
+<% @users.each do |user|%>
+
+    <td><%= user.email %></td>
+    <td><%= user.posts %></td>
+    <td><%= link_to 'Удалить учетную запись', user, method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
+
+<% end %>

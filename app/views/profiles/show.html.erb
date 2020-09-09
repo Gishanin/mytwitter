@@ -1,0 +1,8 @@
+<div class="profile">
+<h3>Профиль: <%= current_user.email %></h3>
+<p>Ник: <%= current_user.profile.nickname %></p>
+<p>Имя: <%= current_user.profile.first_name %></p>
+<p>Фамилия: <%= current_user.profile.second_name %></p>
+<p>Возраст: <%= current_user.profile.age %></p>
+<%= link_to "Редактировать", edit_profile_url, class:'btn btn-warning'%>
+</div>

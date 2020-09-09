@@ -1,0 +1,19 @@
+<h2 class="text-center">Востановление пароля</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="col-md-20 col-lg-8 mx-auto text-center mt-6">
+  <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
+  <div class="col-md-20 col-lg-8 mx-auto text-center mt-6">
+  <div class="form-label-group mb-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder:'Email'%>
+  </div>
+  
+  <div class="actions btn btn-primary">
+    <%= f.submit "Востановить", class:'btn btn-primary' %><br />
+  </div>
+<% end %>
+</div>
+<div class="col-md-20 col-lg-8 mx-auto text-center mt-6">
+<%= render "devise/shared/links" %>
+</div>

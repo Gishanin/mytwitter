@@ -1,0 +1,20 @@
+<div class="profile">
+  <%= form_for(@profile) do |f| %>
+    <div class="form-label-group mb-3">
+      <%= f.text_field :nickname, class:'form-control', placeholder:'Ник' %>
+    </div>
+    <div class="form-label-group mb-3">
+      <%= f.text_field :first_name, class:'form-control', placeholder:'Имя' %>
+    </div>
+    <div class="form-label-group mb-3">
+      <%= f.text_field :second_name, class:'form-control', placeholder:'Фамилия' %>
+    </div>
+    <div class="form-label-group mb-3">
+      <%= f.text_field :age, class:'form-control', placeholder:'Возраст' %>
+    </div>
+    <div class="custom-checkbox mb-3">
+      <div class="actions">
+        <%= f.submit "Сохранить",  class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mt-5 mb-3' %>
+      </div>
+    <% end %>
+  </div>

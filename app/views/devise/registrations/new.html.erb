@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="col-md-12 col-lg-12">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto text-center">
+              <div class='col-sm-12 mb-6'>
+                <h2>Регистрация</h2>
+              </div>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource%>
+                <div class="form-label-group mb-3 mt-5">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control mb-3', placeholder:'Email'  %>
+                </div>
+                <div class="form-label-group mb-3">
+                  <%= f.password_field :password, autocomplete: "new-password", class:'form-control mb-3', placeholder:'Пароль' %>
+                </div>
+                <div class="form-label-group mb-5">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder:'Повторите пароль' %>
+                </div>
+                <%= f.fields_for :profile_attributes do |profile| %>
+                  <div class="form-label-group mb-3">
+                    <%= profile.text_field :nickname, class:'form-control', placeholder:'Ник' %>
+                  </div>
+                  <div class="form-label-group mb-3">
+                    <%= profile.text_field :first_name, class:'form-control', placeholder:'Имя' %>
+                  </div>
+                  <div class="form-label-group mb-3">
+                    <%= profile.text_field :second_name, class:'form-control', placeholder:'Фамилия' %>
+                  </div>
+                  <div class="form-label-group mb-3">
+                    <%= profile.text_field :age, class:'form-control', placeholder:'Возраст' %>
+                  </div>
+                <% end %>
+                <div class="custom-checkbox mb-3">
+                  <div class="actions">
+                    <%= f.submit "Регестрация",  class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mt-5 mb-3' %>
+                  </div>
+                  <div class="text-center">
+                    <%= render "devise/shared/links" %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
