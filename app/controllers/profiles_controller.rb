@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   def show
     @profile = current_user.profile
+    @posts = Post.find_by(user: current_user)
   end
 
   def edit

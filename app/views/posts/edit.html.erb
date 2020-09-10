@@ -1,5 +1,5 @@
-<h2 class='text-center mt-3'>Новый твит</h2>
-<%= form_for :post, url: posts_path do |f| %>
+<h2 class='text-center mt-3'>Редактировать твит</h2>
+<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
   <% if @post.errors.any? %>
     <div class='col-md-4 mb-3'>
       <% @post.errors.full_messages.each do |msg|%>
@@ -9,10 +9,10 @@
   <% end %>
   <div class="post__new">
     <div class='post__title'>
-      <%= f.text_field :title, class:'form-control mb-6', placeholder:'Название' %>
+      <%= f.text_field :title, class:'form-control mb-6', placeholder:'Название'  %>
     </div>
     <div class='post__text'>
-      <%= f.text_area :text,size: "25x7", class:'form-control', placeholder:'Текст'%>
+      <%= f.text_area :text,size: "25x7", class:'form-control', placeholder:'Текст' %>
     </div>
     <div class='text-center'>
       <%= f.submit class:'btn btn-success'%>

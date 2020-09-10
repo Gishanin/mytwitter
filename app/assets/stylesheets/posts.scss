@@ -17,3 +17,31 @@
     text-align: right;
   }
 }
+
+.post__new {
+  background: #f8f9fa;
+  padding: 10px 20px 200px 20px;
+  margin: 20px 20px 20px 20px;
+  border-radius: 30px;
+}
+
+.post__title {
+  margin: 20px 50px 20px 50px
+}
+
+.post__text {
+  margin: 20px 50px 50px 50px; 
+  
+  textarea {
+    resize: none;
+  }
+}
+
+.text__form {
+  display: block;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: #d0d4f7;
+}

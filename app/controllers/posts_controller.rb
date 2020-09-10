@@ -15,19 +15,22 @@ class PostsController < ApplicationController
         @post = current_user.posts.new(post_params)
 
         if(@post.save)
-            redirect_to posts_url
+            redirect_to profile_url
         else
         render 'new'
         end    
     end
     def edit
-
+        @post = Post.find(params[:id])
     end
     def update
         
     end
     def destroy
+        @post = Post.find(params[:id])
 
+        @post.destroy
+        redirect_to profile_url
     end
     
 
