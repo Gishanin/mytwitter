@@ -22,11 +22,11 @@
           <% liked = post.likes.find_by(user: current_user) %>
           <% if liked %>
             <%= link_to post_likes_path(post), method: :delete do %>
-              <%= image_tag "Unlike" %>
+              <%= image_tag "Unlike.svg" %>
             <% end %>
           <% else %>
             <%= link_to post_likes_path(post), method: :post do %>
-              <%= image_tag "Like" %>
+              <%= image_tag "Like.svg" %>
             <% end %>
           <% end %>
           <%= post.likes.count %>
