@@ -25,4 +25,7 @@ test:
 
 production:
   <<: *default
-  database: mytwitter_production
+  host: ec2-52-30-161-203.eu-west-1.compute.amazonaws.com
+  database: d9uc2vlp8t3as1
+  username: ngpfjbdvydnhyy
+  password: 8799fc49bd501d756b6c4c6f8432ce5999c71c0691f0eefb1cb81640a5fbe110

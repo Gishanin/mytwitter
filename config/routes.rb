@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
   resources :users
-  resource :profile
+  
+  get '/profile', to: 'profile#show'
+  get '/profile/:id/edit', to: 'profile#edit', as: :edit_profile
+  patch '/profile/:id', to: 'profile#update'
+
+  get '/profiles', to: 'profiles#index', as: :user_profiles
+  get '/profiles/:id', to: 'profiles#show', as: :user_profile
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

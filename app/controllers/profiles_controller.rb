@@ -1,22 +1,17 @@
 class ProfilesController < ApplicationController
+  before_action :get_user_profile, only: :show
+
+  def index
+    @profiles = Profile.all
+  end
+
   def show
-    @profile = current_user.profile
     @posts = Post.find_by(user: current_user)
-  end
-
-  def edit
-    @profile = current_user.profile
-  end
-
-  def update
-    profile = Profile.find_by(user: current_user)
-    profile.update(profile_params) if profile.present?
-    redirect_to profile_url
   end
 
   private
 
-  def profile_params
-    params.require(:profile).permit(:nickname, :first_name, :second_name, :age)
+  def get_user_profile
+    @profile = Profile.find(params[:id])
   end
 end

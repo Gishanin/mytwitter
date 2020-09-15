@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
     posts_path(current_user)
   end
 
+  def security
+    redirect_to root_url
+  end
   protected
 
   def configure_permitted_parameters
