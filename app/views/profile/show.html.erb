@@ -1,23 +1,25 @@
 <% if user_signed_in? %>
-<div class="profile">
-  <div class="user__profile">
-    <h3 class="badge badge-pill badge-secondary">Профиль: <%= current_user.email %></h3>
-    <div class="card mb-3">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Ник: <%= current_user.profile.nickname %></li>
-        <li class="list-group-item">Имя: <%= current_user.profile.first_name %></li>
-        <li class="list-group-item">Фамилия: <%= current_user.profile.second_name %></li>
-        <li class="list-group-item">Возраст: <%= current_user.profile.age %></li>
-      </ul>
-    </div>
-    <%# <p>Ник: <%= current_user.profile.nickname %></p>
-  <%# <p>Имя: <%= current_user.profile.first_name %></p>
-<%# <p>Фамилия: <%= current_user.profile.second_name %></p>
+  <div class="profile">
+    <div class="user__profile">
+      <h3 class="badge badge-pill badge-secondary">Профиль: <%= current_user.email %></h3>
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Ник: <%= current_user.profile.nickname %></li>
+          <li class="list-group-item">Имя: <%= current_user.profile.first_name %></li>
+          <li class="list-group-item">Фамилия: <%= current_user.profile.second_name %></li>
+          <li class="list-group-item">Возраст: <%= current_user.profile.age %></li>
+        </ul>
+      </div>
+      <%# <p>Ник: <%= current_user.profile.nickname %></p>
+    <%# <p>Имя: <%= current_user.profile.first_name %></p>
+  <%# <p>Фамилия: <%= current_user.profile.second_name %></p>
 <%# <p>Возраст: <%= current_user.profile.age %></p>
-<div class="post__grid">
+<div class="profile__grid">
   <div>
     <%= link_to "Редактировать", edit_profile_path(current_user.profile.id), class:'btn btn-warning'%>
   </div>
+  <div class="mt-2">Подписчики: <%= current_user.followers.count %> </div>
+  <div class="mt-2">Подписки: <%= current_user.followees.count %>  </div>
   <div class="text-right">
     <%= link_to 'Удалить акканут', user_registration_path, method: :delete, data: { confirm: "Вы уверенны?" }, class:'btn btn-danger' if user_signed_in? %>
   </div>
@@ -47,7 +49,7 @@
     <div>
       <h2 class='ml-5 mb-5 mt-5 mr-5'>Вы не авторизированы!</h2>
       <div class='text-center ml-3 mb-3 mt-3 mr-3'>
-      <%= link_to 'Войти', new_user_session_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %> или <%= link_to 'Зарегистрироваться', new_user_registration_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %>
+        <%= link_to 'Войти', new_user_session_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %> или <%= link_to 'Зарегистрироваться', new_user_registration_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %>
       </div>
     </div>
   </div>
