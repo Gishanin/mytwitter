@@ -5,6 +5,7 @@
 
 
 }
+
 .user__profile {
   background: #f8f9fa;
   padding: 10px 20px 10px 20px;
@@ -16,6 +17,7 @@
     margin-bottom: 5px;
   }
 }
+
 .user__post {
   background: #f8f9fa;
   padding: 10px 20px 10px 20px;
@@ -26,13 +28,20 @@
     margin-bottom: 5px;
   }
 }
+
 .profile__edit {
   background: #f8f9fa;
   padding: 10px 20px 10px 20px;
   margin: 20px 20px 20px 20px;
   border-radius: 30px;
 }
+
 .post__grid {
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+.profiles__grid {
+  display: grid;
+  grid-template-columns: 50% 33% 17%;
 }

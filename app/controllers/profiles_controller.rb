@@ -13,5 +13,6 @@ class ProfilesController < ApplicationController
 
   def get_user_profile
     @profile = Profile.find(params[:id])
+    redirect_to root_url if current_user == @profile.user
   end
 end

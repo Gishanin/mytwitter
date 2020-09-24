@@ -1,46 +1,57 @@
 <% if user_signed_in? %>
-<div class="profile">
-  <div class="user__profile">
-    <h3 class="badge badge-pill badge-secondary">Профиль: <%= @profile.nickname %></h3>
-    <div class="card mb-3">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Ник: <%= @profile.nickname %></li>
-        <li class="list-group-item">Имя: <%= @profile.first_name %></li>
-        <li class="list-group-item">Фамилия: <%= @profile.second_name %></li>
-        <li class="list-group-item">Возраст: <%= @profile.age %></li>
-      </ul>
+  <div class="profile">
+    <div class="user__profile">
+      <h3 class="badge badge-pill badge-secondary">Профиль: <%= @profile.nickname %></h3>
+      <div class="card mb-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Ник: <%= @profile.nickname %></li>
+          <li class="list-group-item">Имя: <%= @profile.first_name %></li>
+          <li class="list-group-item">Фамилия: <%= @profile.second_name %></li>
+          <li class="list-group-item">Возраст: <%= @profile.age %></li>
+        </ul>
+      </div>
+      <div class="profiles__grid">
+      <% if @current_user.followees.include?(@profile.user) %>
+        <%= button_to "Отписка", unfollow_user_path, method: "POST", class:'btn btn-danger' %>
+      <% else %>
+        <%= button_to "Подписка", follow_user_path, method: "POST", class:'btn btn-primary'  %>
+      <% end%>
+      <div class="mt-2 text-right">Подписчики: <%= @profile.user.followers.count %> </div>
+      <div class="mt-2 text-right">Подписки: <%= @profile.user.followees.count %>  </div>
+      </div>
     </div>
-  </div>
-  <div>
-    <h2 class='text-center'>Мои посты</h2>
-    <% @profile.user.posts.each do |post| %>
-      <div class="user__post">
-        <h4><%= post.title %></h4>
-        <p><%= post.text %></p>
-        <hr class="my-4">
-        <div class='mt-4'>
-          <% liked = post.likes.find_by(user: current_user) %>
-          <% if liked %>
-            <%= link_to post_likes_path(post), method: :delete do %>
-              <%= image_tag "Unlike.svg" %>
+    <div>
+      <h2 class='text-center'>Посты 
+        <div class="badge badge-pill badge-secondary"><%= @profile.nickname %></div>
+      </h2>
+      <% @profile.user.posts.each do |post| %>
+        <div class="user__post">
+          <h4><%= post.title %></h4>
+          <p><%= post.text %></p>
+          <hr class="my-4">
+          <div class='mt-4'>
+            <% liked = post.likes.find_by(user: current_user) %>
+            <% if liked %>
+              <%= link_to post_likes_path(post), method: :delete do %>
+                <%= image_tag "Unlike.svg" %>
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(post), method: :post do %>
+                <%= image_tag "Like.svg" %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to post_likes_path(post), method: :post do %>
-              <%= image_tag "Like.svg" %>
-            <% end %>
-          <% end %>
-          <%= post.likes.count %>
+            <%= post.likes.count %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class='security'>
+      <div>
+        <h2 class='ml-5 mb-5 mt-5 mr-5'>Вы не авторизированы!</h2>
+        <div class='text-center ml-3 mb-3 mt-3 mr-3'>
+          <%= link_to 'Войти', new_user_session_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %> или <%= link_to 'Зарегистрироваться', new_user_registration_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %>
         </div>
       </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class='security'>
-    <div>
-      <h2 class='ml-5 mb-5 mt-5 mr-5'>Вы не авторизированы!</h2>
-      <div class='text-center ml-3 mb-3 mt-3 mr-3'>
-      <%= link_to 'Войти', new_user_session_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %> или <%= link_to 'Зарегистрироваться', new_user_registration_path, class:'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2' %>
-      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
