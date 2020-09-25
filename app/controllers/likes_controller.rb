@@ -21,5 +21,5 @@ class LikesController < ApplicationController
 
   def find_like
     @like = Like.find_by(post: @post, user: current_user)
- end
+  end
 end
