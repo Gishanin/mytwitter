@@ -11,13 +11,17 @@
         </ul>
       </div>
       <div class="profiles__grid">
-      <% if @current_user.followees.include?(@profile.user) %>
-        <%= button_to "Отписка", unfollow_user_path, method: "POST", class:'btn btn-danger' %>
-      <% else %>
-        <%= button_to "Подписка", follow_user_path, method: "POST", class:'btn btn-primary'  %>
-      <% end%>
-      <div class="mt-2 text-right">Подписчики: <%= @profile.user.followers.count %> </div>
-      <div class="mt-2 text-right">Подписки: <%= @profile.user.followees.count %>  </div>
+        <% if @current_user.followees.include?(@profile.user) %>
+          <%= button_to "Отписка", unfollow_user_path, method: "POST", class:'btn btn-danger' %>
+        <% else %>
+          <%= button_to "Подписка", follow_user_path, method: "POST", class:'btn btn-primary'  %>
+        <% end%>
+        <div class="mt-2 text-right">Подписчики: <%= @profile.user.followers.count %> </div>
+        <div class="mt-2 text-right">Подписки: <%= @profile.user.followees.count %>  </div>
+        <%#<% @profile.user.followers.each do |f| %>
+         <%# <li><%= f.profile.first_name %></li>
+        <%#<% end %>
+        <%#<%= link_to "Podisciki", user_followers_url(params[:id]) %>
       </div>
     </div>
     <div>

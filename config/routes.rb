@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   get '/profiles', to: 'profiles#index', as: :user_profiles
   get '/profiles/:id', to: 'profiles#show', as: :user_profile
-
+  get '/followers/:id', to: 'followers#index', as: :user_followers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
