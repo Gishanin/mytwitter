@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :posts do
-    resource :likes, only: %i[create destroy]
+    resource :like, only: %i[create destroy show]
   end
   resources :users
   post "/users/:id/follow", to: "users#follow", as: "follow_user"

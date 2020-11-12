@@ -6,6 +6,10 @@ class LikesController < ApplicationController
     @post.likes.create(user: current_user)
     redirect_back(fallback_location: root_path)
   end
+  
+  def show 
+   p 'pisun'
+  end
 
   def destroy
     @like.destroy
@@ -15,7 +19,6 @@ class LikesController < ApplicationController
   private
 
   def find_post
-    p params
     @post = Post.find(params[:post_id])
   end
 
